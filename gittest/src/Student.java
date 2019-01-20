@@ -2,11 +2,11 @@ import java.util.Date;
 
 public class Student extends Member {
 
-    private static int studentNumber;
+    private static int studentNumber = 0;
     private String code;
-    private membership membershipType = membership.STUDENT;
+    private Membership membershipType = Membership.STUDENT;
 
-    public Student(String name, String familyName, Date registeryDate, membership membershipType) {
+    public Student(String name, String familyName, Date registeryDate, Membership membershipType) {
         super(name, familyName, registeryDate, membershipType);
     }
 

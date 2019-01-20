@@ -4,12 +4,6 @@ public class Thesis extends Source {
 
     private String author;
 
-    public enum authorGrade {
-        BSC,
-        MSC,
-        PHD
-    }
-
     authorGrade grade;
 
     public Thesis(String title, Date publishDate, String author, authorGrade grade) {

@@ -5,16 +5,9 @@ public abstract class Member {
     private String name;
     private String familyName;
     private Date registeryDate;
+    private Membership membershipType;
 
-    public enum membership {
-        STUDENT,
-        TEACHER,
-        GUEST
-    }
-
-    private membership membershipType;
-
-    public Member (String name, String familyName, Date registeryDate, membership membershipType) {
+    public Member (String name, String familyName, Date registeryDate, Membership membershipType) {
         setCode();
         setName(name);
         setFamilyName(familyName);
@@ -48,11 +41,11 @@ public abstract class Member {
         return this.registeryDate;
     }
 
-    public void setMembershipType(membership membershipType) {
+    public void setMembershipType(Membership membershipType) {
         this.membershipType = membershipType;
     }
 
-    public membership getMembershipType() {
+    public Membership getMembershipType() {
         return this.membershipType;
     }
 }

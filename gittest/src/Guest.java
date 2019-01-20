@@ -4,9 +4,9 @@ public class Guest extends Member {
 
     private static int guestNumber;
     private String code;
-    private membership membershipType = membership.GUEST;
+    private Membership membershipType = Membership.GUEST;
 
-    public Guest(String name, String familyName, Date registeryDate, membership membershipType) {
+    public Guest(String name, String familyName, Date registeryDate, Membership membershipType) {
         super(name, familyName, registeryDate, membershipType);
     }
 
