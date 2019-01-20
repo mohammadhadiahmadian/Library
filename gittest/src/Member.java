@@ -7,11 +7,11 @@ public abstract class Member {
     private Date registeryDate;
     private Membership membershipType;
 
-    public Member (String name, String familyName, Date registeryDate, Membership membershipType) {
+    public Member (String name, String familyName, Membership membershipType) {
         setCode();
         setName(name);
         setFamilyName(familyName);
-        setRegisteryDate(registeryDate);
+        setRegisteryDate();
         setMembershipType(membershipType);
     }
 
@@ -37,8 +37,8 @@ public abstract class Member {
         return this.registeryDate;
     }
 
-    public void setRegisteryDate(Date registeryDate) {
-        this.registeryDate = registeryDate;
+    public void setRegisteryDate() {
+        this.registeryDate = new Date();
     }
 
     public Membership getMembershipType() {

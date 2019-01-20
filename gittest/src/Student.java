@@ -6,8 +6,8 @@ public class Student extends Member {
     private String code;
     private Membership membershipType = Membership.STUDENT;
 
-    public Student(String name, String familyName, Date registeryDate, Membership membershipType) {
-        super(name, familyName, registeryDate, membershipType);
+    public Student(String name, String familyName, Membership membershipType) {
+        super(name, familyName, membershipType);
     }
 
     public void setCode() {
