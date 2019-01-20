@@ -51,7 +51,7 @@ public abstract class Member {
         this.membershipType = membershipType;
     }
 
-    public ArrayList getBorrows() {
+    public ArrayList<Source> getBorrows() {
         return this.borrows;
     }
 
