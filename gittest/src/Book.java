@@ -24,13 +24,12 @@ public class Book extends Source {
             if (member instanceof Student) {
                 date.setHours(date.getHours() + 336);
             }
-            if (member instanceof Teacher) {
+            else if (member instanceof Teacher) {
+                date.setHours(date.getHours() + 720);
+            }
+            else if (member instanceof Guest) {
                 date.setHours(date.getHours() + 240);
             }
-            if (member instanceof Guest) {
-                date.setHours(date.getHours() + 120);
-            }
-
             this.setBorrowDate();
             this.setReturnDate(date);
             this.setBorrowable(false);
