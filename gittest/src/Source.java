@@ -35,9 +35,9 @@ public abstract class Source {
         this.title = title;
     }
 
-    public Date getPublishDate() {
+    /* public Date getPublishDate() {
         return this.publishDate;
-    }
+    } */
 
     public void setPublishDate(Date publishDate) {
         this.publishDate = publishDate;
@@ -59,13 +59,12 @@ public abstract class Source {
         this.returnDateLimit = returnDateLimit;
     }
 
-    public Date getReturnDate() {
+    /* public Date getReturnDate() {
         return this.returnDate;
-    }
+    } */
 
     public void setReturnDate() {
         this.returnDate = new Date();
-        this.setBorrowable(true);
     }
 
     public boolean isBorrowable() {

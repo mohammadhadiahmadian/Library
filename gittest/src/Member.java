@@ -35,9 +35,9 @@ public abstract class Member {
         this.familyName = familyName;
     }
 
-    public Date getRegistryDate() {
+    /* public Date getRegistryDate() {
         return this.registryDate;
-    }
+    } */
 
     public void setRegistryDate() {
         this.registryDate = new Date();
@@ -62,6 +62,7 @@ public abstract class Member {
     }
 
     public void returnSource(Source source) {
+        source.setBorrowable(true);
         source.setReturnDate();
     }
 

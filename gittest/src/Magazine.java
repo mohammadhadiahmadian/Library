@@ -30,7 +30,7 @@ public class Magazine extends Source {
                 date.setHours(date.getHours() + 480);
             }
             this.setBorrowDate();
-            this.setReturnDate(date);
+            this.setReturnDateLimit(date);
             this.setBorrowable(false);
             return true;
         }

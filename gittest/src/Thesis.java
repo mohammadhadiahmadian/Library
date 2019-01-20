@@ -38,7 +38,7 @@ public class Thesis extends Source {
                 date.setHours(date.getHours() + 240);
             }
             this.setBorrowDate();
-            this.setReturnDate(date);
+            this.setReturnDateLimit(date);
             this.setBorrowable(false);
             return true;
         }
