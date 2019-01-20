@@ -66,6 +66,6 @@ public abstract class Source {
         this.borrowable = borrowable;
     }
 
-    abstract public void borrowing(Member member);
+    abstract public void borrowing(Member member) throws GuestBorrowException;
 
 }
