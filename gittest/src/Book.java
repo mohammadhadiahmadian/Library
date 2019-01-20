@@ -18,4 +18,23 @@ public class Book extends Source {
         this.author = author;
     }
 
+    public void borrowing(Member member) {
+        Date date = new Date();
+        if(this.isBorrowable()) {
+            if (member instanceof Student) {
+                date.setHours(date.getHours() + 336);
+            }
+            if (member instanceof Teacher) {
+                date.setHours(date.getHours() + 240);
+            }
+            if (member instanceof Guest) {
+                date.setHours(date.getHours() + 120);
+            }
+
+            this.setBorrowDate();
+            this.setReturnDate(date);
+            this.setBorrowable(false);
+        }
+    }
+
 }
