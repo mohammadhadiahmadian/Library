@@ -7,6 +7,7 @@ public abstract class Source {
     private String title;
     private Date publishDate;
     private Date borrowDate;
+    private Date returnDateLimit;
     private Date returnDate;
     private boolean borrowable;
 
@@ -50,9 +51,17 @@ public abstract class Source {
         this.borrowDate = new Date();
     }
 
+    public Date getReturnDateLimit() {
+        return this.returnDateLimit;
+}
+
+    public void setReturnDateLimit(Date returnDateLimit) {
+        this.returnDateLimit = returnDateLimit;
+    }
+
     public Date getReturnDate() {
         return this.returnDate;
-}
+    }
 
     public void setReturnDate(Date returnDate) {
         this.returnDate = returnDate;
