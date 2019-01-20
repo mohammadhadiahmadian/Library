@@ -9,9 +9,9 @@ public class Magazine extends Source {
         setMagazineNumber(magazineNumber);
     }
 
-    public int getMagazineNumber() {
+    /* public int getMagazineNumber() {
         return magazineNumber;
-    }
+    } */
 
     public void setMagazineNumber(int magazineNumber) {
         if (magazineNumber > 0)
@@ -23,10 +23,10 @@ public class Magazine extends Source {
     public boolean borrowing(Member member) {
         Date date = new Date();
         if(this.isBorrowable()) {
-            if (member instanceof Student) {
+            if (member.getMembershipType().equals(Membership.STUDENT)) {
                 date.setHours(date.getHours() + 240);
             }
-            else if (member instanceof Teacher) {
+            else if (member.getMembershipType().equals(Membership.TEACHER)) {
                 date.setHours(date.getHours() + 480);
             }
             this.setBorrowDate();

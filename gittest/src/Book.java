@@ -21,13 +21,13 @@ public class Book extends Source {
     public boolean borrowing(Member member) {
         Date date = new Date();
         if(this.isBorrowable()) {
-            if (member instanceof Student) {
+            if (member.getMembershipType().equals(Membership.STUDENT)) {
                 date.setHours(date.getHours() + 336);
             }
-            else if (member.getMembershipType().equals(Membership.GUEST)) {
+            else if (member.getMembershipType().equals(Membership.TEACHER)) {
                 date.setHours(date.getHours() + 720);
             }
-            else if (member instanceof Guest) {
+            else if (member.getMembershipType().equals(Membership.GUEST)) {
                 date.setHours(date.getHours() + 240);
             }
             this.setBorrowDate();

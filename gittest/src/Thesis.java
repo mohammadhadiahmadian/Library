@@ -31,10 +31,10 @@ public class Thesis extends Source {
     public boolean borrowing(Member member){
         Date date = new Date();
         if(this.isBorrowable()) {
-            if (member instanceof Student) {
+            if (member.getMembershipType().equals(Membership.STUDENT)) {
                 date.setHours(date.getHours() + 120);
             }
-            else if (member instanceof Teacher) {
+            else if (member.getMembershipType().equals(Membership.TEACHER)) {
                 date.setHours(date.getHours() + 240);
             }
             this.setBorrowDate();
