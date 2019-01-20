@@ -1,20 +1,21 @@
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Book extends Source {
 
-    private String[] author;
+    private ArrayList author = new ArrayList();
 
-    public Book(String title, Date publishDate, String[] author) {
+    public Book(String title, Date publishDate, ArrayList author) {
         super(title, publishDate);
         setAuthor(author);
     }
 
-    public void setAuthor(String[] author) {
-        this.author = author;
+    public ArrayList getAuthor() {
+        return this.author;
     }
 
-    public String[] getAuthor() {
-        return this.author;
+    public void setAuthor(ArrayList author) {
+        this.author = author;
     }
 
 }

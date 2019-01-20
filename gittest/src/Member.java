@@ -17,35 +17,36 @@ public abstract class Member {
 
     abstract public void setCode();
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getName() {
         return this.name;
     }
 
-    public void setFamilyName(String familyName) {
-        this.familyName = familyName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getFamilyName() {
         return this.familyName;
     }
 
-    public void setRegisteryDate(Date registeryDate) {
-        this.registeryDate = registeryDate;
+    public void setFamilyName(String familyName) {
+        this.familyName = familyName;
     }
 
     public Date getRegisteryDate() {
         return this.registeryDate;
     }
 
-    public void setMembershipType(Membership membershipType) {
-        this.membershipType = membershipType;
+    public void setRegisteryDate(Date registeryDate) {
+        this.registeryDate = registeryDate;
     }
 
     public Membership getMembershipType() {
         return this.membershipType;
     }
+
+    public void setMembershipType(Membership membershipType) {
+        this.membershipType = membershipType;
+    }
+
 }

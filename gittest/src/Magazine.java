@@ -9,15 +9,15 @@ public class Magazine extends Source {
         setMagazineNumber(magazineNumber);
     }
 
+    public int getMagazineNumber() {
+        return magazineNumber;
+    }
+
     public void setMagazineNumber(int magazineNumber) {
         if (magazineNumber > 0)
             this.magazineNumber = magazineNumber;
         else
             this.magazineNumber = 1;
-    }
-
-    public int getMagazineNumber() {
-        return magazineNumber;
     }
 
 }

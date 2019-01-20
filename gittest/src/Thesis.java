@@ -1,31 +1,31 @@
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Thesis extends Source {
 
-    private String author;
+    private ArrayList author;
+    private AuthorGrade grade;
 
-    authorGrade grade;
-
-    public Thesis(String title, Date publishDate, String author, authorGrade grade) {
+    public Thesis(String title, Date publishDate, ArrayList author, AuthorGrade grade) {
         super(title, publishDate);
         setAuthor(author);
         setGrade(grade);
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getAuthor() {
+    public ArrayList getAuthor() {
         return this.author;
     }
 
-    public void setGrade(authorGrade grade) {
-        this.grade = grade;
+    public void setAuthor(ArrayList author) {
+        this.author = author;
     }
 
-    public authorGrade getGrade() {
+    public AuthorGrade getGrade() {
         return this.grade;
+    }
+
+    public void setGrade(AuthorGrade grade) {
+        this.grade = grade;
     }
 
 }

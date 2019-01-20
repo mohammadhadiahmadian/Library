@@ -6,9 +6,6 @@ public abstract class Source {
     private String code;
     private String title;
     private Date publishDate;
-    private Date borrowDate;
-    private Date returnDate;
-    private boolean borrowable = true;
 
     public Source(String title, Date publishDate) {
         setCode();
@@ -40,31 +37,5 @@ public abstract class Source {
     public void setPublishDate(Date publishDate) {
         this.publishDate = publishDate;
     }
-
-    public Date getBorrowDate() {
-        return this.borrowDate;
-    }
-
-    public void setBorrowDate() {
-        this.borrowDate = new Date();
-    }
-
-    public Date getReturnDate() {
-        return this.returnDate;
-    }
-
-    public abstract void setReturnDate(Member member);
-
-    public boolean isBorrowable() {
-        return this.borrowable;
-    }
-
-    public void setBorrowable(boolean borrowable) {
-        this.borrowable = borrowable;
-    }
-
-    public abstract void borrowSource(Member member);
-
-    public abstract void returnSource(Member member);
 
 }
