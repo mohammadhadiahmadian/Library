@@ -28,7 +28,7 @@ public class Thesis extends Source {
         this.grade = grade;
     }
 
-    public void borrowing(Member member) throws GuestBorrowException {
+    public boolean borrowing(Member member){
         Date date = new Date();
         if(this.isBorrowable()) {
             if (member instanceof Student) {
@@ -37,12 +37,13 @@ public class Thesis extends Source {
             else if (member instanceof Teacher) {
                 date.setHours(date.getHours() + 240);
             }
-            else if (member instanceof Guest) {
-                throw new GuestBorrowException();
-            }
             this.setBorrowDate();
             this.setReturnDate(date);
             this.setBorrowable(false);
+            return true;
+        }
+        else {
+            return false;
         }
     }
 

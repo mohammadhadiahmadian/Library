@@ -18,7 +18,7 @@ public class Book extends Source {
         this.author = author;
     }
 
-    public void borrowing(Member member) {
+    public boolean borrowing(Member member) {
         Date date = new Date();
         if(this.isBorrowable()) {
             if (member instanceof Student) {
@@ -33,6 +33,10 @@ public class Book extends Source {
             this.setBorrowDate();
             this.setReturnDate(date);
             this.setBorrowable(false);
+            return true;
+        }
+        else {
+            return false;
         }
     }
 

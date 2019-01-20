@@ -1,17 +1,19 @@
+import java.util.ArrayList;
 import java.util.Date;
 
 public abstract class Member {
 
     private String name;
     private String familyName;
-    private Date registeryDate;
+    private Date registryDate;
     private Membership membershipType;
+    private ArrayList<Source> borrows;
 
     public Member (String name, String familyName, Membership membershipType) {
         setCode();
         setName(name);
         setFamilyName(familyName);
-        setRegisteryDate();
+        setRegistryDate();
         setMembershipType(membershipType);
     }
 
@@ -33,12 +35,12 @@ public abstract class Member {
         this.familyName = familyName;
     }
 
-    public Date getRegisteryDate() {
-        return this.registeryDate;
+    public Date getRegistryDate() {
+        return this.registryDate;
     }
 
-    public void setRegisteryDate() {
-        this.registeryDate = new Date();
+    public void setRegistryDate() {
+        this.registryDate = new Date();
     }
 
     public Membership getMembershipType() {
@@ -47,6 +49,16 @@ public abstract class Member {
 
     public void setMembershipType(Membership membershipType) {
         this.membershipType = membershipType;
+    }
+
+    public ArrayList getBorrows() {
+        return this.borrows;
+    }
+
+    public void setBorrows(Source source) {
+        if (source.borrowing(this) == true) {
+            borrows.add(source);
+        }
     }
 
 }
