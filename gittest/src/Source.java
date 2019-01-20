@@ -63,8 +63,9 @@ public abstract class Source {
         return this.returnDate;
     }
 
-    public void setReturnDate(Date returnDate) {
-        this.returnDate = returnDate;
+    public void setReturnDate() {
+        this.returnDate = new Date();
+        this.setBorrowable(true);
     }
 
     public boolean isBorrowable() {

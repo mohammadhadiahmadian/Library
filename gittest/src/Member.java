@@ -61,4 +61,8 @@ public abstract class Member {
         }
     }
 
+    public void returnSource(Source source) {
+        source.setReturnDate();
+    }
+
 }
