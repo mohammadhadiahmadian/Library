@@ -33,7 +33,7 @@ public class Thesis extends Source {
         else if (member instanceof Teacher)
             result.setHours(result.getHours() + 240);
         else if (member instanceof Guest)
-        throw GuestBorrowException;
+        throw new GuestBorrowException();
         return result;
     }
 
