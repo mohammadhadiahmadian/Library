@@ -5,17 +5,14 @@ public abstract class Source {
     private static int sourceNumber = 0;
     private String code;
     private String title;
-    private Date publishDate;
+    private boolean borrowable = true;
     private Date borrowDate;
-    private Date returnDateLimit;
+    private Date returnTimeout;
     private Date returnDate;
-    private boolean borrowable;
 
-    public Source(String title, Date publishDate) {
+    public Source(String title) {
         setCode();
         setTitle(title);
-        setPublishDate(publishDate);
-        setBorrowable(true);
     }
 
     public String getCode() {
@@ -35,12 +32,12 @@ public abstract class Source {
         this.title = title;
     }
 
-    /* public Date getPublishDate() {
-        return this.publishDate;
-    } */
+    public boolean isBorrowable() {
+        return this.borrowable;
+    }
 
-    public void setPublishDate(Date publishDate) {
-        this.publishDate = publishDate;
+    public void setBorrowable(boolean borrowable) {
+        this.borrowable = borrowable;
     }
 
     public Date getBorrowDate() {
@@ -51,31 +48,14 @@ public abstract class Source {
         this.borrowDate = new Date();
     }
 
-    public Date getReturnDateLimit() {
-        return this.returnDateLimit;
-}
-
-    public void setReturnDateLimit(Date returnDateLimit) {
-        this.returnDateLimit = returnDateLimit;
+    public Date getReturnTimeout() {
+        return this.returnTimeout;
     }
 
-    /* public Date getReturnDate() {
-        return this.returnDate;
-    } */
+    abstract Date setReturnTimeout(Member member) throws GuestBorrowException;
 
     public void setReturnDate() {
         this.returnDate = new Date();
-        this.setBorrowable(true);
     }
-
-    public boolean isBorrowable() {
-        return this.borrowable;
-    }
-
-    public void setBorrowable(boolean borrowable) {
-        this.borrowable = borrowable;
-    }
-
-    abstract public boolean borrowing(Member member);
 
 }
