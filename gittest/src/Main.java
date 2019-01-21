@@ -72,7 +72,18 @@ public class Main {
     }
 
     public void returnSource(Member member, Source source) {
-
+        boolean flag = false;
+        for (Source sourceSearch : member.getBorrows()) {
+            if (sourceSearch == source) {
+                flag = true;
+                break;
+            }
+        }
+        if (flag) {
+            source.setReturnDate();
+            source.setBorrowable(true);
+            member.setBorrows_return(source);
+        }
     }
 
 }
