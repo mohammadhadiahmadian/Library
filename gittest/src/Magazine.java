@@ -4,14 +4,10 @@ public class Magazine extends Source {
 
     private int magazineNumber;
 
-    public Magazine(String title, Date publishDate, int magazineNumber) {
-        super(title, publishDate);
+    public Magazine(String title, int magazineNumber) {
+        super(title);
         setMagazineNumber(magazineNumber);
     }
-
-    /* public int getMagazineNumber() {
-        return magazineNumber;
-    } */
 
     public void setMagazineNumber(int magazineNumber) {
         if (magazineNumber > 0)
@@ -20,23 +16,15 @@ public class Magazine extends Source {
             this.magazineNumber = 1;
     }
 
-    public boolean borrowing(Member member) {
-        Date date = new Date();
-        if(this.isBorrowable()) {
-            if (member.getMembershipType().equals(Membership.STUDENT)) {
-                date.setHours(date.getHours() + 240);
-            }
-            else if (member.getMembershipType().equals(Membership.TEACHER)) {
-                date.setHours(date.getHours() + 480);
-            }
-            this.setBorrowDate();
-            this.setReturnDateLimit(date);
-            this.setBorrowable(false);
-            return true;
-        }
-        else {
-            return false;
-        }
+    public Date setReturnTimeout(Member member) throws GuestBorrowException{
+        Date result = new Date();
+        if (member instanceof Student)
+            result.setHours(result.getHours() + 240);
+        else if (member instanceof Teacher)
+            result.setHours(result.getHours() + 480);
+        else  (member instanceof Guest)
+            throw GuestBorrowException;
+        return result;
     }
 
 }

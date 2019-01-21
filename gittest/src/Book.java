@@ -33,9 +33,9 @@ public class Book extends Source {
         Date result = new Date();
         if (member instanceof Student)
             result.setHours(result.getHours() + 336);
-        if (member instanceof Teacher)
+        else if (member instanceof Teacher)
             result.setHours(result.getHours() + 720);
-        if (member instanceof Guest)
+        else if (member instanceof Guest)
             result.setHours(result.getHours() + 240);
         return result;
     }

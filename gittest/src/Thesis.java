@@ -3,48 +3,38 @@ import java.util.Date;
 
 public class Thesis extends Source {
 
-    private ArrayList author;
-    private AuthorGrade grade;
+    private Date publishDate;
+    private String author;
+    private AuthorGrade authorGrade;
 
-    public Thesis(String title, Date publishDate, ArrayList author, AuthorGrade grade) {
-        super(title, publishDate);
+    public Thesis(String title, Date publishDate, String author, AuthorGrade authorGrade) {
+        super(title);
+        setPublishDate(publishDate);
         setAuthor(author);
-        setGrade(grade);
+        setAuthorGrade(authorGrade);
     }
 
-    public ArrayList getAuthor() {
-        return this.author;
+    public void setPublishDate(Date publishDate) {
+        this.publishDate = publishDate;
     }
 
-    public void setAuthor(ArrayList author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 
-    public AuthorGrade getGrade() {
-        return this.grade;
+    public void setAuthorGrade(AuthorGrade authorGrade) {
+        this.authorGrade = authorGrade;
     }
 
-    public void setGrade(AuthorGrade grade) {
-        this.grade = grade;
-    }
-
-    public boolean borrowing(Member member){
-        Date date = new Date();
-        if(this.isBorrowable()) {
-            if (member.getMembershipType().equals(Membership.STUDENT)) {
-                date.setHours(date.getHours() + 120);
-            }
-            else if (member.getMembershipType().equals(Membership.TEACHER)) {
-                date.setHours(date.getHours() + 240);
-            }
-            this.setBorrowDate();
-            this.setReturnDateLimit(date);
-            this.setBorrowable(false);
-            return true;
-        }
-        else {
-            return false;
-        }
+    public Date setReturnTimeout(Member member) throws GuestBorrowException{
+        Date result = new Date();
+        if (member instanceof Student)
+            result.setHours(result.getHours() + 120);
+        else if (member instanceof Teacher)
+            result.setHours(result.getHours() + 240);
+        else if (member instanceof Guest)
+        throw GuestBorrowException;
+        return result;
     }
 
 }
