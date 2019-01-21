@@ -1,13 +1,24 @@
+import com.sun.jndi.toolkit.url.GenericURLContext;
+
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Book extends Source {
 
+    private int publishYear;
     private ArrayList<String> author = new ArrayList();
 
-    public Book(String title, Date publishDate, ArrayList<String> author) {
-        super(title, publishDate);
+    public Book(String title, int publishYear, ArrayList<String> author) {
+        super(title);
+        setPublishYear(publishYear);
         setAuthor(author);
+    }
+
+    public void setPublishYear(int publishYear) {
+        if (publishYear >= 1300 && publishYear <= 1397)
+            this.publishYear = publishYear;
+        else
+            this.publishYear = 1397;
     }
 
     public ArrayList<String> getAuthor() {
@@ -18,26 +29,15 @@ public class Book extends Source {
         this.author = author;
     }
 
-    public boolean borrowing(Member member) {
-        Date date = new Date();
-        if(this.isBorrowable()) {
-            if (member.getMembershipType().equals(Membership.STUDENT)) {
-                date.setHours(date.getHours() + 336);
-            }
-            else if (member.getMembershipType().equals(Membership.TEACHER)) {
-                date.setHours(date.getHours() + 720);
-            }
-            else if (member.getMembershipType().equals(Membership.GUEST)) {
-                date.setHours(date.getHours() + 240);
-            }
-            this.setBorrowDate();
-            this.setReturnDateLimit(date);
-            this.setBorrowable(false);
-            return true;
-        }
-        else {
-            return false;
-        }
+    public Date setReturnTimeout(Member member) {
+        Date result = new Date();
+        if (member instanceof Student)
+            result.setHours(result.getHours() + 336);
+        if (member instanceof Teacher)
+            result.setHours(result.getHours() + 720);
+        if (member instanceof Guest)
+            result.setHours(result.getHours() + 240);
+        return result;
     }
 
 }
