@@ -3,8 +3,8 @@ public class Teacher extends Member {
     private static int teacherNumber = 0;
     private String code;
 
-    public Teacher(String name, String familyName) {
-        super(name, familyName, Membership.TEACHER);
+    public Teacher(String firstName, String lastName) {
+        super(firstName, lastName, Membership.TEACHER);
     }
 
     public void setCode() {

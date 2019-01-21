@@ -3,18 +3,18 @@ import java.util.Date;
 
 public class Book extends Source {
 
-    private ArrayList author = new ArrayList();
+    private ArrayList<String> author = new ArrayList();
 
-    public Book(String title, Date publishDate, ArrayList author) {
+    public Book(String title, Date publishDate, ArrayList<String> author) {
         super(title, publishDate);
         setAuthor(author);
     }
 
-    public ArrayList getAuthor() {
+    public ArrayList<String> getAuthor() {
         return this.author;
     }
 
-    public void setAuthor(ArrayList author) {
+    public void setAuthor(ArrayList<String> author) {
         this.author = author;
     }
 

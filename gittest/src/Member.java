@@ -3,41 +3,42 @@ import java.util.Date;
 
 public abstract class Member {
 
-    private String name;
-    private String familyName;
+    private String code;
+    private String firstName;
+    private String lastName;
     private Date registryDate;
     private Membership membershipType;
     private ArrayList<Source> borrows;
 
-    public Member (String name, String familyName, Membership membershipType) {
+    public Member (String firstName, String lastName, Membership membershipType) {
         setCode();
-        setName(name);
-        setFamilyName(familyName);
+        setFirstName(firstName);
+        setLastName(lastName);
         setRegistryDate();
         setMembershipType(membershipType);
     }
 
+    public String getCode() {
+        return this.code;
+    }
+
     abstract public void setCode();
 
-    public String getName() {
-        return this.name;
+    public String getFirstName() {
+        return this.firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getFamilyName() {
-        return this.familyName;
+    public String getLastName() {
+        return this.lastName;
     }
 
-    public void setFamilyName(String familyName) {
-        this.familyName = familyName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
-
-    /* public Date getRegistryDate() {
-        return this.registryDate;
-    } */
 
     public void setRegistryDate() {
         this.registryDate = new Date();
@@ -55,15 +56,12 @@ public abstract class Member {
         return this.borrows;
     }
 
-    public void setBorrows(Source source) {
-        if (source.borrowing(this) == true) {
-            borrows.add(source);
-        }
+    public void setBorrows_borrow(Source source) {
+        this.borrows.add(source);
     }
 
-    public void returnSource(Source source) {
-        source.setBorrowable(true);
-        source.setReturnDate();
+    public void setBorrows_return(Source source) {
+        this.borrows.remove(source);
     }
 
 }
