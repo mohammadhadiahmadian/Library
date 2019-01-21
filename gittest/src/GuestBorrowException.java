@@ -1,12 +1,11 @@
 public class GuestBorrowException extends Exception {
 
-    public GuestBorrowException() {
-
+    public GuestBorrowException(Member guest) {
+        this.getMessage(guest);
     }
 
-    @Override
-    public String getMessage() {
-        return "No guest cannot borrow magazine or thesis.";
+    public String getMessage(Member guest) {
+        return guest.getFirstName() + guest.getLastName() + "is a guest and can't borrow magazine or thesis.";
     }
 
 }

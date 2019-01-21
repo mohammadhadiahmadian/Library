@@ -23,7 +23,7 @@ public class Magazine extends Source {
         else if (member instanceof Teacher)
             result.setHours(result.getHours() + 480);
         else if (member instanceof Guest)
-            throw new GuestBorrowException();
+            throw new GuestBorrowException(member);
         return result;
     }
 

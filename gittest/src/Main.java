@@ -71,7 +71,7 @@ public class Main {
         }
     }
 
-    public void returnSource(Member member, Source source) {
+    public void returnSource(Member member, Source source) throws ReturnError {
         boolean flag = false;
         for (Source sourceSearch : member.getBorrows()) {
             if (sourceSearch == source) {
@@ -84,6 +84,8 @@ public class Main {
             source.setBorrowable(true);
             member.setBorrows_return(source);
         }
+        else
+            throw new ReturnError(member, source);
     }
 
 }
