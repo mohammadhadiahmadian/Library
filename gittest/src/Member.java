@@ -8,7 +8,7 @@ public abstract class Member {
     private String lastName;
     private Date registryDate;
     private Membership membershipType;
-    private ArrayList<Source> borrows;
+    private ArrayList<Source> borrows = new ArrayList<>();
 
     public Member (String firstName, String lastName, Membership membershipType) {
         setCode();

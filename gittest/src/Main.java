@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Main {
 
@@ -39,6 +40,19 @@ public class Main {
         for (Member member : this.getMembers()) {
             if (member.getFirstName().contains(search) || member.getLastName().contains(search))
                 result.add(member);
+        }
+        return result;
+    }
+
+    public ArrayList<Member> timeoutInfringements() {
+        ArrayList<Member> result = new ArrayList<>();
+        for (Member member : this.getMembers()) {
+            for (Source source : member.getBorrows()) {
+                if (source.getReturnTimeout().before(new Date())) {
+                    result.add(member);
+                    break;
+                }
+            }
         }
         return result;
     }
