@@ -34,4 +34,13 @@ public class Main {
         return result;
     }
 
+    public ArrayList<Member> searchMember(String search) {
+        ArrayList<Member> result = new ArrayList<>();
+        for (Member member : this.getMembers()) {
+            if (member.getFirstName().contains(search) || member.getLastName().contains(search))
+                result.add(member);
+        }
+        return result;
+    }
+
 }
