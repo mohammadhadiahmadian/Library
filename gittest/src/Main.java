@@ -57,4 +57,22 @@ public class Main {
         return result;
     }
 
+    public void borrowSource(Member member, Source source) throws GuestBorrowException {
+        if (source.isBorrowable()) {
+            try {
+                source.setReturnTimeout(member);
+                source.setBorrowDate();
+                source.setBorrowable(false);
+                member.setBorrows_borrow(source);
+            }
+            catch (GuestBorrowException e) {
+                e.getMessage();
+            }
+        }
+    }
+
+    public void returnSource(Member member, Source source) {
+
+    }
+
 }
