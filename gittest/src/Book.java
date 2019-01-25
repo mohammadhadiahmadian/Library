@@ -33,7 +33,7 @@ public class Book extends Source {
             result.setHours(result.getHours() + 336);
         else if (member instanceof Teacher)
             result.setHours(result.getHours() + 720);
-        else if (member instanceof Guest)
+        else
             result.setHours(result.getHours() + 240);
         return result;
     }

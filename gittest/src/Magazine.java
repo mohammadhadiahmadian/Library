@@ -19,10 +19,10 @@ public class Magazine extends Source {
     public Date setReturnTimeout(Member member) throws GuestBorrowException{
         Date result = new Date();
         if (member instanceof Student)
-            result.setHours(result.getHours() + 240);
+            new Date().setHours(new Date().getHours() + 240);
         else if (member instanceof Teacher)
             result.setHours(result.getHours() + 480);
-        else if (member instanceof Guest)
+        else
             throw new GuestBorrowException(member);
         return result;
     }

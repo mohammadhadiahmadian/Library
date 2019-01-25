@@ -31,7 +31,7 @@ public class Thesis extends Source {
             result.setHours(result.getHours() + 120);
         else if (member instanceof Teacher)
             result.setHours(result.getHours() + 240);
-        else if (member instanceof Guest)
+        else
             throw new GuestBorrowException(member);
         return result;
     }
