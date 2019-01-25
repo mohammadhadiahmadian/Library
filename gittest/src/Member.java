@@ -8,7 +8,6 @@ public abstract class Member {
     private String lastName;
     private Date registryDate;
     private Membership membershipType;
-    private ArrayList<Source> borrows = new ArrayList<>();
 
     public Member (String firstName, String lastName, Membership membershipType) {
         setCode();
@@ -50,18 +49,6 @@ public abstract class Member {
 
     public void setMembershipType(Membership membershipType) {
         this.membershipType = membershipType;
-    }
-
-    public ArrayList<Source> getBorrows() {
-        return this.borrows;
-    }
-
-    public void setBorrows_borrow(Source source) {
-        this.borrows.add(source);
-    }
-
-    public void setBorrows_return(Source source) {
-        this.borrows.remove(source);
     }
 
 }

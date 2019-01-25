@@ -4,12 +4,12 @@ import java.util.Date;
 public class Book extends Source {
 
     private int publishYear;
-    private ArrayList<String> author = new ArrayList();
+    private String authors;
 
-    public Book(String title, int publishYear, ArrayList<String> author) {
+    public Book(String title, int publishYear, String authors) {
         super(title);
         setPublishYear(publishYear);
-        setAuthor(author);
+        setAuthor(authors);
     }
 
     public void setPublishYear(int publishYear) {
@@ -19,12 +19,12 @@ public class Book extends Source {
             this.publishYear = 1397;
     }
 
-    public ArrayList<String> getAuthor() {
-        return this.author;
+    public String getAuthor() {
+        return this.authors;
     }
 
-    public void setAuthor(ArrayList<String> author) {
-        this.author = author;
+    public void setAuthor(String authors) {
+        this.authors = authors;
     }
 
     public Date setReturnTimeout(Member member) {

@@ -1,15 +1,74 @@
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Main {
 
-    private ArrayList<Member> members = new ArrayList<>();
-    private ArrayList<Source> sources = new ArrayList<>();
-
     public static void main(String[] args) {
 
     }
 
+    public void addSource(File file) {
+        try {
+            DataOutputStream BookoutputStream = new DataOutputStream(new BufferedOutputStream(new FileOutputStream("books.bin")));
+            DataOutputStream MagazineoutputStream = new DataOutputStream(new BufferedOutputStream(new FileOutputStream("magazines.bin")));
+            DataOutputStream ThesisoutputStream = new DataOutputStream(new BufferedOutputStream(new FileOutputStream("theses.bin")));
+            try {
+                BufferedReader reader = new BufferedReader(new FileReader(file));
+                try {
+                    String line = reader.readLine();
+                    while (line != null) {
+                        String[] items = line.split(",");
+                        String title = items[1];
+
+                        if (items[0] == "Book") {
+                            int publishYear = Integer.parseInt(items[2]);
+                            String authors = items[3];
+                            Book book = new Book(title, publishYear, authors);
+                        }
+
+                        else if (items[0] == "Magazine") {
+                            String[] date = items[2].split("/");
+                            int[] dateToInteger = new int[3];
+                            for (int i = 0 ; i <= 2 ; i++) {
+                                dateToInteger[i] = Integer.parseInt(date[i]);
+                            }
+                            Date publishDate = new Date(dateToInteger[0],dateToInteger[1],dateToInteger[2]);
+                            int magazineNumber = Integer.parseInt(items[3]);
+                        }
+
+                        else {
+                            String[] date = items[2].split("/");
+                            int[] dateToInteger = new int[3];
+                            for (int i = 0 ; i <= 2 ; i++) {
+                                dateToInteger[i] = Integer.parseInt(date[i]);
+                            }
+                            Date publishDate = new Date(dateToInteger[0],dateToInteger[1],dateToInteger[2]);
+                            String author = items[3];
+                            String authorGrade = items[4];
+                        }
+
+                        line = reader.readLine();
+                    }
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+    /*
     public ArrayList<Member> getMembers() {
         return this.members;
     }
@@ -88,4 +147,5 @@ public class Main {
             throw new ReturnError(member, source);
     }
 
+    */
 }

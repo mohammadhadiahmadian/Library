@@ -3,10 +3,12 @@ import java.util.Date;
 public class Magazine extends Source {
 
     private int magazineNumber;
+    private Date publishDate;
 
-    public Magazine(String title, int magazineNumber) {
+    public Magazine(String title, int magazineNumber, Date publishDate) {
         super(title);
         setMagazineNumber(magazineNumber);
+        setPublishDate(publishDate);
     }
 
     public void setMagazineNumber(int magazineNumber) {
@@ -14,6 +16,10 @@ public class Magazine extends Source {
             this.magazineNumber = magazineNumber;
         else
             this.magazineNumber = 1;
+    }
+
+    public void setPublishDate(Date publishDate) {
+        this.publishDate = publishDate;
     }
 
     public Date setReturnTimeout(Member member) throws GuestBorrowException{
