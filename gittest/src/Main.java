@@ -77,9 +77,31 @@ public class Main {
                     }
 
                     else {
+                        String title = items[1];
+                        String[] dateString = items[2].split("/");
+                        Date publishDate = new Date(Integer.parseInt(dateString[0]) - 1900, Integer.parseInt(dateString[1]) - 1,Integer.parseInt(dateString[2]));
+                        String author = items[3];
+                        String authorGrade = items[4];
+                        Thesis thesis = new Thesis(title, publishDate, author, AuthorGrade.valueOf(authorGrade));
+                        outputTheses.writeChars(thesis.getCode());
+                        outputTheses.writeChars(thesis.getTitle());
+                        outputTheses.writeChars(Integer.toString(thesis.getPublishDate().getYear() + 1900) + "/" + Integer.toString(thesis.getPublishDate().getMonth() + 1) + "/" + thesis.getPublishDate().getDate());
+                        outputTheses.writeBoolean(thesis.isBorrowable());
+                        if (thesis.getBorrowDate() != null)
+                            outputTheses.writeChars(Integer.toString(thesis.getBorrowDate().getYear() + 1900) + "/" + Integer.toString(thesis.getBorrowDate().getMonth() + 1) + "/" + thesis.getBorrowDate().getDate());
+                        else
+                            outputTheses.writeChars(0000 + "/" + 00 + "/" + 00);
 
+                        if (thesis.getReturnDate() != null)
+                            outputTheses.writeChars(Integer.toString(thesis.getReturnDate().getYear() + 1900) + "/" + Integer.toString(thesis.getReturnDate().getMonth() + 1) + "/" + thesis.getReturnDate().getDate());
+                        else
+                            outputTheses.writeChars(0000 + "/" + 00 + "/" + 00);
+
+                        if (thesis.getBorrowDate() != null)
+                            outputTheses.writeChars(Integer.toString(thesis.getBorrowDate().getYear() + 1900) + "/" + Integer.toString(thesis.getBorrowDate().getMonth() + 1) + "/" + thesis.getBorrowDate().getDate());
+                        else
+                            outputTheses.writeChars(0000 + "/" + 00 + "/" + 00);
                     }
-
                     line = input.readLine();
                 }
             }

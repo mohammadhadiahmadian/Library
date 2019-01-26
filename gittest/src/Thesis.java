@@ -13,6 +13,10 @@ public class Thesis extends Source {
         setAuthorGrade(authorGrade);
     }
 
+    public Date getPublishDate() {
+        return this.publishDate;
+    }
+
     public void setPublishDate(Date publishDate) {
         this.publishDate = publishDate;
     }
