@@ -11,6 +11,10 @@ public class Book extends Source {
         setAuthor(authors);
     }
 
+    public int getPublishYear() {
+        return this.publishYear;
+    }
+
     public void setPublishYear(int publishYear) {
         if (publishYear >= 1300 && publishYear <= 1397)
             this.publishYear = publishYear;

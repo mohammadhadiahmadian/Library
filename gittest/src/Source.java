@@ -54,6 +54,10 @@ public abstract class Source {
 
     abstract Date setReturnTimeout(Member member) throws GuestBorrowException;
 
+    public Date getReturnDate() {
+        return this.returnDate;
+    }
+
     public void setReturnDate() {
         this.returnDate = new Date();
     }

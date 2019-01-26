@@ -11,6 +11,10 @@ public class Magazine extends Source {
         setPublishDate(publishDate);
     }
 
+    public int getMagazineNumber() {
+        return this.magazineNumber;
+    }
+
     public void setMagazineNumber(int magazineNumber) {
         if (magazineNumber > 0)
             this.magazineNumber = magazineNumber;
