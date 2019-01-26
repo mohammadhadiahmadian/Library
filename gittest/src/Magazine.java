@@ -22,6 +22,10 @@ public class Magazine extends Source {
             this.magazineNumber = 1;
     }
 
+    public Date getPublishDate() {
+        return this.publishDate;
+    }
+
     public void setPublishDate(Date publishDate) {
         this.publishDate = publishDate;
     }
