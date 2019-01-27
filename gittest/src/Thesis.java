@@ -21,8 +21,16 @@ public class Thesis extends Source implements PublishDate {
         this.publishDate = publishDate;
     }
 
+    public String getAuthor() {
+        return this.author;
+    }
+
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public AuthorGrade getAuthorGrade() {
+        return this.authorGrade;
     }
 
     public void setAuthorGrade(AuthorGrade authorGrade) {

@@ -27,26 +27,17 @@ public class Main {
                         String title = items[1];
                         int publishYear = Integer.parseInt(items[2]);
                         String authors = items[3];
-                        Book book = new Book(title, publishYear, authors);
+                        String[] authorsArray = authors.split(" and ");
+                        ArrayList<String> result = new ArrayList<>();
+                        for (String author : authorsArray) {
+                            result.add(author);
+                        }
+                        Book book = new Book(title, publishYear, result);
                         outputBooks.writeChars(book.getCode());
                         outputBooks.writeChars(book.getTitle());
                         outputBooks.writeInt(book.getPublishYear());
-                        outputBooks.writeChars(book.getAuthor());
+                        outputBooks.writeChars(authors);
                         outputBooks.writeBoolean(book.isBorrowable());
-                        if (book.getBorrowDate() != null)
-                            outputBooks.writeChars(Integer.toString(book.getBorrowDate().getYear() + 1900) + "/" + Integer.toString(book.getBorrowDate().getMonth() + 1) + "/" + book.getBorrowDate().getDate());
-                        else
-                            outputBooks.writeChars(0000 + "/" + 00 + "/" + 00);
-
-                        if (book.getReturnDate() != null)
-                            outputBooks.writeChars(Integer.toString(book.getReturnDate().getYear() + 1900) + "/" + Integer.toString(book.getReturnDate().getMonth() + 1) + "/" + book.getReturnDate().getDate());
-                        else
-                            outputBooks.writeChars(0000 + "/" + 00 + "/" + 00);
-
-                        if (book.getBorrowDate() != null)
-                            outputBooks.writeChars(Integer.toString(book.getBorrowDate().getYear() + 1900) + "/" + Integer.toString(book.getBorrowDate().getMonth() + 1) + "/" + book.getBorrowDate().getDate());
-                        else
-                            outputBooks.writeChars(0000 + "/" + 00 + "/" + 00);
                     }
 
                     else if (items[0].equalsIgnoreCase("magazine")) {
@@ -60,20 +51,6 @@ public class Main {
                         outputMagazines.writeInt(magazine.getMagazineNumber());
                         outputMagazines.writeChars(Integer.toString(magazine.getPublishDate().getYear() + 1900) + "/" + Integer.toString(magazine.getPublishDate().getMonth() + 1) + "/" + magazine.getPublishDate().getDate());
                         outputMagazines.writeBoolean(magazine.isBorrowable());
-                        if (magazine.getBorrowDate() != null)
-                            outputMagazines.writeChars(Integer.toString(magazine.getBorrowDate().getYear() + 1900) + "/" + Integer.toString(magazine.getBorrowDate().getMonth() + 1) + "/" + magazine.getBorrowDate().getDate());
-                        else
-                            outputMagazines.writeChars(0000 + "/" + 00 + "/" + 00);
-
-                        if (magazine.getReturnDate() != null)
-                            outputMagazines.writeChars(Integer.toString(magazine.getReturnDate().getYear() + 1900) + "/" + Integer.toString(magazine.getReturnDate().getMonth() + 1) + "/" + magazine.getReturnDate().getDate());
-                        else
-                            outputMagazines.writeChars(0000 + "/" + 00 + "/" + 00);
-
-                        if (magazine.getBorrowDate() != null)
-                            outputMagazines.writeChars(Integer.toString(magazine.getBorrowDate().getYear() + 1900) + "/" + Integer.toString(magazine.getBorrowDate().getMonth() + 1) + "/" + magazine.getBorrowDate().getDate());
-                        else
-                            outputMagazines.writeChars(0000 + "/" + 00 + "/" + 00);
                     }
 
                     else {
@@ -86,21 +63,9 @@ public class Main {
                         outputTheses.writeChars(thesis.getCode());
                         outputTheses.writeChars(thesis.getTitle());
                         outputTheses.writeChars(Integer.toString(thesis.getPublishDate().getYear() + 1900) + "/" + Integer.toString(thesis.getPublishDate().getMonth() + 1) + "/" + thesis.getPublishDate().getDate());
+                        outputTheses.writeChars(thesis.getAuthor());
+                        outputTheses.writeChars(thesis.getAuthorGrade().toString());
                         outputTheses.writeBoolean(thesis.isBorrowable());
-                        if (thesis.getBorrowDate() != null)
-                            outputTheses.writeChars(Integer.toString(thesis.getBorrowDate().getYear() + 1900) + "/" + Integer.toString(thesis.getBorrowDate().getMonth() + 1) + "/" + thesis.getBorrowDate().getDate());
-                        else
-                            outputTheses.writeChars(0000 + "/" + 00 + "/" + 00);
-
-                        if (thesis.getReturnDate() != null)
-                            outputTheses.writeChars(Integer.toString(thesis.getReturnDate().getYear() + 1900) + "/" + Integer.toString(thesis.getReturnDate().getMonth() + 1) + "/" + thesis.getReturnDate().getDate());
-                        else
-                            outputTheses.writeChars(0000 + "/" + 00 + "/" + 00);
-
-                        if (thesis.getBorrowDate() != null)
-                            outputTheses.writeChars(Integer.toString(thesis.getBorrowDate().getYear() + 1900) + "/" + Integer.toString(thesis.getBorrowDate().getMonth() + 1) + "/" + thesis.getBorrowDate().getDate());
-                        else
-                            outputTheses.writeChars(0000 + "/" + 00 + "/" + 00);
                     }
                     line = input.readLine();
                 }
