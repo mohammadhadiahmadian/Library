@@ -14,4 +14,7 @@ public enum AuthorGrade {
         return this.string;
    }
 
+
+
+
 }
