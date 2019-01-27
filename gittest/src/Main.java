@@ -91,10 +91,71 @@ public class Main {
 
     }
 
-    /*
     public static void addMember(File file) {
 
+        BufferedReader input = null;
+        DataOutputStream outputStudents = null;
+        DataOutputStream outputTeachers = null;
+        DataOutputStream outputGuests = null;
+        try {
+            input = new BufferedReader(new FileReader(file));
+            outputStudents = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(new File("students.bin"))));
+            outputTeachers = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(new File("teachers.bin"))));
+            outputGuests = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(new File("guests.bin"))));
+            try {
+                String line = input.readLine();
+                while (line != null) {
+                    String[] items = line.split(",");
+                    String firstName = items[1];
+                    String lastName = items[2];
+                    if (items[0].equalsIgnoreCase("student")) {
+                        Student student = new Student(firstName, lastName);
+                        outputStudents.writeChars(student.getCode());
+                        outputStudents.writeChars(student.getFirstName());
+                        outputStudents.writeChars(student.getLastName());
+                        outputStudents.writeChars(Integer.toString(student.getRegistryDate().getYear() + 1900) + "/" + Integer.toString(student.getRegistryDate().getMonth() + 1) + "/" + student.getRegistryDate().getDate());
+                    }
+
+                    else if (items[0].equalsIgnoreCase("teacher")) {
+                        Teacher teacher = new Teacher(firstName, lastName);
+                        outputTeachers.writeChars(teacher.getCode());
+                        outputTeachers.writeChars(teacher.getFirstName());
+                        outputTeachers.writeChars(teacher.getLastName());
+                        outputTeachers.writeChars(Integer.toString(teacher.getRegistryDate().getYear() + 1900) + "/" + Integer.toString(teacher.getRegistryDate().getMonth() + 1) + "/" + teacher.getRegistryDate().getDate());
+                    }
+
+                    else {
+                        Guest guest = new Guest(firstName, lastName);
+                        outputGuests.writeChars(guest.getCode());
+                        outputGuests.writeChars(guest.getFirstName());
+                        outputGuests.writeChars(guest.getLastName());
+                        outputGuests.writeChars(Integer.toString(guest.getRegistryDate().getYear() + 1900) + "/" + Integer.toString(guest.getRegistryDate().getMonth() + 1) + "/" + guest.getRegistryDate().getDate());
+                    }
+                    line = input.readLine();
+                }
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                input.close();
+                outputBooks.close();
+                outputMagazines.close();
+                outputTheses.close();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
+
+    /*
 
     public static void borrowSource(String Sourcecode, String Membercode) {
 

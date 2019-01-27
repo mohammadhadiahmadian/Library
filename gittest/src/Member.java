@@ -39,6 +39,10 @@ public abstract class Member {
         this.lastName = lastName;
     }
 
+    public Date getRegistryDate() {
+        return this.registryDate;
+    }
+
     public void setRegistryDate() {
         this.registryDate = new Date();
     }
