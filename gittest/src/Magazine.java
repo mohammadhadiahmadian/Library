@@ -1,6 +1,6 @@
 import java.util.Date;
 
-public class Magazine extends Source {
+public class Magazine extends Source implements PublishDate {
 
     private int magazineNumber;
     private Date publishDate;

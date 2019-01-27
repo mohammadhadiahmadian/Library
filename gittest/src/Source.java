@@ -6,9 +6,7 @@ public abstract class Source {
     private String code;
     private String title;
     private boolean borrowable = true;
-    private Date borrowDate;
     private Date returnTimeout;
-    private Date returnDate;
 
     public Source(String title) {
         setCode();
@@ -40,26 +38,10 @@ public abstract class Source {
         this.borrowable = borrowable;
     }
 
-    public Date getBorrowDate() {
-        return this.borrowDate;
-    }
-
-    public void setBorrowDate() {
-        this.borrowDate = new Date();
-    }
-
     public Date getReturnTimeout() {
         return this.returnTimeout;
     }
 
     abstract Date setReturnTimeout(Member member) throws GuestBorrowException;
-
-    public Date getReturnDate() {
-        return this.returnDate;
-    }
-
-    public void setReturnDate() {
-        this.returnDate = new Date();
-    }
 
 }

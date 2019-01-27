@@ -1,6 +1,6 @@
 public class Guest extends Member {
 
-    private static int guestNumber;
+    private static int guestNumber = 0;
     private String code;
 
     public Guest(String firstName, String lastName) {
