@@ -1,11 +1,12 @@
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Book extends Source {
 
     private int publishYear;
-    private String authors;
+    private ArrayList<String> authors;
 
-    public Book(String title, int publishYear, String authors) {
+    public Book(String title, int publishYear, ArrayList<String> authors) {
         super(title);
         setPublishYear(publishYear);
         setAuthor(authors);
@@ -22,11 +23,11 @@ public class Book extends Source {
             this.publishYear = 1397;
     }
 
-    public String getAuthor() {
+    public ArrayList<String> getAuthor() {
         return this.authors;
     }
 
-    public void setAuthor(String authors) {
+    public void setAuthor(ArrayList<String> authors) {
         this.authors = authors;
     }
 

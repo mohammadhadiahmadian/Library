@@ -1,6 +1,6 @@
 import java.util.Date;
 
-public class Thesis extends Source {
+public class Thesis extends Source implements PublishDate {
 
     private Date publishDate;
     private String author;
