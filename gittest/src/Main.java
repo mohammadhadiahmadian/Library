@@ -4,6 +4,15 @@ import java.util.Date;
 
 public class Main {
 
+    /*
+    public final static int bookRecordLenght = 0;
+    public final static int magazineRecordLenght = 0;
+    public final static int thesisRecordLenght = 0;
+    public final static int studentRecordLenght = 0;
+    public final static int teacherRecordLenght = 0;
+    public final static int guestRecordLenght = 0;
+    */
+
     public static void main(String[] args) {
 
     }
@@ -144,9 +153,9 @@ public class Main {
         finally {
             try {
                 input.close();
-                outputBooks.close();
-                outputMagazines.close();
-                outputTheses.close();
+                outputStudents.close();
+                outputTeachers.close();
+                outputGuests.close();
             }
             catch (IOException e) {
                 e.printStackTrace();
@@ -155,11 +164,11 @@ public class Main {
 
     }
 
-    /*
-
     public static void borrowSource(String Sourcecode, String Membercode) {
 
     }
+
+    /*
 
     public static void returnSource(String Sourcecode, String Membercode) {
 
