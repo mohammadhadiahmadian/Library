@@ -1,8 +1,14 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.ArrayList;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class Main {
+public class Main extends Application{
 
     /*
     public final static int bookRecordLenght = 0;
@@ -13,7 +19,24 @@ public class Main {
     public final static int guestRecordLenght = 0;
     */
 
+    @Override
+    public void start(Stage stage) throws Exception {
+        SceneManager.getInstance().setStage(stage);
+
+        Parent root = FXMLLoader.load(getClass().getResource("firstPage.fxml"));
+        SceneManager.getInstance().addScene("pageOne", new Scene(root));
+        Parent root2 = FXMLLoader.load(getClass().getResource("secondPage.fxml"));
+        SceneManager.getInstance().addScene("pageTwo", new Scene(root2));
+        Parent root3 = FXMLLoader.load(getClass().getResource("sourcePage.fxml"));
+        SceneManager.getInstance().addScene("pageSource", new Scene(root3));
+
+        SceneManager.getInstance().loadScene("pageOne");
+        stage.show();
+    }
+
+
     public static void main(String[] args) {
+        launch(args) ;
 
     }
 
