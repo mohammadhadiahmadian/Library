@@ -15,12 +15,12 @@
    <children>
       <ImageView fitHeight="412.0" fitWidth="609.0" layoutX="-6.0" layoutY="-6.0" pickOnBounds="true">
          <image>
-            <Image url="@../Photo/635873821517718970351055939_Stack-of-books-great-education.jpg" />
+            <Image url="@Photo/635873821517718970351055939_Stack-of-books-great-education.jpg" />
          </image>
       </ImageView>
       <ImageView fx:id="backButton" fitHeight="67.0" fitWidth="65.0" layoutX="14.0" layoutY="327.0" onMouseClicked="#backButtonclick" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Photo/download.png" />
+            <Image url="@Photo/download.png" />
          </image>
          <effect>
             <Lighting>
