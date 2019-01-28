@@ -26,13 +26,13 @@ public class Main extends Application{
         SceneManager.getInstance().setStage(stage);
 
         Parent root = FXMLLoader.load(getClass().getResource("firstPage.fxml"));
-        SceneManager.getInstance().addScene("pageOne", new Scene(root));
+        SceneManager.getInstance().addScene("firstPage", new Scene(root));
         Parent root2 = FXMLLoader.load(getClass().getResource("secondPage.fxml"));
-        SceneManager.getInstance().addScene("pageTwo", new Scene(root2));
+        SceneManager.getInstance().addScene("secondPage", new Scene(root2));
         Parent root3 = FXMLLoader.load(getClass().getResource("sourcePage.fxml"));
-        SceneManager.getInstance().addScene("pageSource", new Scene(root3));
+        SceneManager.getInstance().addScene("sourcePage", new Scene(root3));
 
-        SceneManager.getInstance().loadScene("pageOne");
+        SceneManager.getInstance().loadScene("firstPage");
         stage.show();
     }
 
