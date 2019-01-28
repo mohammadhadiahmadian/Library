@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerSource">
    <children>
@@ -16,12 +18,6 @@
             <Image url="@../Photo/635873821517718970351055939_Stack-of-books-great-education.jpg" />
          </image>
       </ImageView>
-      <TextField fx:id="SourceName" layoutX="192.0" layoutY="32.0" onAction="#SourceNameClick" />
-      <Label layoutX="385.0" layoutY="37.0" prefHeight="21.0" prefWidth="65.0" text="نام منبع : " textFill="WHITE" />
-      <RadioButton fx:id="Book" layoutX="389.0" layoutY="94.0" mnemonicParsing="false" onAction="#BookClick" text="کتاب" textFill="WHITE" />
-      <RadioButton fx:id="Magazine" layoutX="292.0" layoutY="94.0" mnemonicParsing="false" onAction="#MagazineClick" text="مجله" textFill="WHITE" />
-      <RadioButton fx:id="Thesis" layoutX="168.0" layoutY="94.0" mnemonicParsing="false" onAction="#ThesisClick" text="پایان نامه" textFill="WHITE" />
-      <Button fx:id="sync" layoutX="257.0" layoutY="150.0" mnemonicParsing="false" onAction="#syncClick" prefHeight="31.0" prefWidth="90.0" text="ثبت" />
       <ImageView fx:id="backButton" fitHeight="67.0" fitWidth="65.0" layoutX="14.0" layoutY="327.0" onMouseClicked="#backButtonclick" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Photo/download.png" />

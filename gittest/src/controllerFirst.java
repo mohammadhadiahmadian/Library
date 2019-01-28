@@ -18,7 +18,7 @@ public class controllerFirst implements Initializable {
 
         @FXML
         private void welcomeclick(ActionEvent event) throws IOException {
-            SceneManager.getInstance().loadScene("secondPage");
+            SceneManager.getInstance().loadScene("pageTwo");
         }
 
         @Override
