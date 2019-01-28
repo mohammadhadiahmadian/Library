@@ -10,5 +10,7 @@ public class Teacher extends Member {
     public void setCode() {
         teacherNumber++;
         this.code = "L".concat(Integer.toString(teacherNumber));
+
+
     }
 }

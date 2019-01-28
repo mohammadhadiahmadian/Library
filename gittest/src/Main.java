@@ -1,3 +1,6 @@
+import sun.plugin2.message.Message;
+import sun.plugin2.message.Serializer;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -47,25 +50,21 @@ public class Main {
                         outputBooks.writeInt(book.getPublishYear());
                         outputBooks.writeChars(authors);
                         outputBooks.writeBoolean(book.isBorrowable());
-                    }
-
-                    else if (items[0].equalsIgnoreCase("magazine")) {
+                    } else if (items[0].equalsIgnoreCase("magazine")) {
                         String title = items[1];
                         int magazineNumber = Integer.parseInt(items[2]);
                         String[] dateString = items[3].split("/");
-                        Date publishDate = new Date(Integer.parseInt(dateString[0]) - 1900, Integer.parseInt(dateString[1]) - 1,Integer.parseInt(dateString[2]));
+                        Date publishDate = new Date(Integer.parseInt(dateString[0]) - 1900, Integer.parseInt(dateString[1]) - 1, Integer.parseInt(dateString[2]));
                         Magazine magazine = new Magazine(title, magazineNumber, publishDate);
                         outputMagazines.writeChars(magazine.getCode());
                         outputMagazines.writeChars(magazine.getTitle());
                         outputMagazines.writeInt(magazine.getMagazineNumber());
                         outputMagazines.writeChars(Integer.toString(magazine.getPublishDate().getYear() + 1900) + "/" + Integer.toString(magazine.getPublishDate().getMonth() + 1) + "/" + magazine.getPublishDate().getDate());
                         outputMagazines.writeBoolean(magazine.isBorrowable());
-                    }
-
-                    else {
+                    } else {
                         String title = items[1];
                         String[] dateString = items[2].split("/");
-                        Date publishDate = new Date(Integer.parseInt(dateString[0]) - 1900, Integer.parseInt(dateString[1]) - 1,Integer.parseInt(dateString[2]));
+                        Date publishDate = new Date(Integer.parseInt(dateString[0]) - 1900, Integer.parseInt(dateString[1]) - 1, Integer.parseInt(dateString[2]));
                         String author = items[3];
                         String authorGrade = items[4];
                         Thesis thesis = new Thesis(title, publishDate, author, AuthorGrade.valueOf(authorGrade));
@@ -78,22 +77,18 @@ public class Main {
                     }
                     line = input.readLine();
                 }
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             try {
                 input.close();
                 outputBooks.close();
                 outputMagazines.close();
                 outputTheses.close();
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -123,17 +118,13 @@ public class Main {
                         outputStudents.writeChars(student.getFirstName());
                         outputStudents.writeChars(student.getLastName());
                         outputStudents.writeChars(Integer.toString(student.getRegistryDate().getYear() + 1900) + "/" + Integer.toString(student.getRegistryDate().getMonth() + 1) + "/" + student.getRegistryDate().getDate());
-                    }
-
-                    else if (items[0].equalsIgnoreCase("teacher")) {
+                    } else if (items[0].equalsIgnoreCase("teacher")) {
                         Teacher teacher = new Teacher(firstName, lastName);
                         outputTeachers.writeChars(teacher.getCode());
                         outputTeachers.writeChars(teacher.getFirstName());
                         outputTeachers.writeChars(teacher.getLastName());
                         outputTeachers.writeChars(Integer.toString(teacher.getRegistryDate().getYear() + 1900) + "/" + Integer.toString(teacher.getRegistryDate().getMonth() + 1) + "/" + teacher.getRegistryDate().getDate());
-                    }
-
-                    else {
+                    } else {
                         Guest guest = new Guest(firstName, lastName);
                         outputGuests.writeChars(guest.getCode());
                         outputGuests.writeChars(guest.getFirstName());
@@ -142,37 +133,131 @@ public class Main {
                     }
                     line = input.readLine();
                 }
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             try {
                 input.close();
                 outputStudents.close();
                 outputTeachers.close();
                 outputGuests.close();
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
     }
 
-    public static void borrowSource(String Sourcecode, String Membercode) {
+    //Methods for borrowing
 
+
+    public static void Borrowing(Source source, Member member)
+    {
+        if(CheckForBorrowable(source,member))
+        {
+            if (borrowSource(source,member))
+            {
+                ChangeSourceStatus(source,false);
+            }
+        }
     }
 
-    /*
+    public static boolean borrowSource(Source source, Member member) {
 
-    public static void returnSource(String Sourcecode, String Membercode) {
-
+        try {
+            DataOutputStream outputStudents = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(new File("Borrows.bin"))));
+            outputStudents.writeChars(String.format("{0},{1},{2}",member.getCode(),source.getCode(),new Date()));
+        }
+        catch(Exception ex){
+            return false;
+        }
+        return true;
     }
+
+    public static boolean ChangeSourceStatus(Source source,boolean state){
+        source.setBorrowable(state);
+        try
+        {
+            String fileName="";
+            String newContent="";
+
+
+            fileName=GetSourceClassName(source);
+            BufferedReader reader=new BufferedReader(new FileReader(fileName));
+            String line=reader.readLine();
+            while(line !=null)
+            {
+                String newLine=line;
+                if(line.contains(source.getCode()))
+                {
+                    newLine=line.replace(String.valueOf(!state),String.valueOf(state));
+                }
+                newContent+=newLine;
+            }
+            FileWriter writer=new FileWriter(fileName);
+        }
+        catch(Exception ex){
+
+        }
+        return true;
+    }
+
+    public static String GetSourceClassName(Source source)
+    {
+        String fileName = "";
+        switch (source.getClass().getName())
+        {
+            case "Book":
+                fileName="Book.bin";
+                break;
+            case "Magazine":
+                fileName="Magazine.bin";
+                break;
+            case "Thesis":
+                fileName="Thesis.bin";
+                break;
+        }
+        return fileName;
+    }
+
+    public static boolean CheckForBorrowable(Source source, Member member) {
+        if (source.isBorrowable()) {
+            if (member.getMembershipType().equals(Membership.GUEST)) {
+                if (source.getClass().equals(Book.class))
+                    return true;
+                else return false;
+            }
+            else return true;
+        }
+        return false;
+    }
+
+    //methods for returning
+
+    public static boolean returnSource(Source source, Member member) {
+
+        try {
+            DataOutputStream outputStudents = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(new File("Returns.bin"))));
+            outputStudents.writeChars(String.format("{0},{1},{2}",member.getCode(),source.getCode(),new Date()));
+        }
+        catch(Exception ex){
+            return false;
+        }
+        return true;
+    }
+
+    public static void Returning(Source source, Member member)
+    {
+
+            if (returnSource(source,member))
+            {
+                ChangeSourceStatus(source,true);
+            }
+        }
+
 
     public static ArrayList<Source> searchSource(String search) {
         ArrayList<Source> result = new ArrayList<>();
@@ -188,5 +273,5 @@ public class Main {
         ArrayList<Member> result = new ArrayList<>();
         return result;
     }
-    */
+
 }
