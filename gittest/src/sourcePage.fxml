@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Light.Distant?>
 <?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.effect.Shadow?>
@@ -11,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerSource">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerSource">
    <children>
       <ImageView fitHeight="412.0" fitWidth="609.0" layoutX="-6.0" layoutY="-6.0" pickOnBounds="true">
          <image>
@@ -33,5 +31,7 @@
             </Lighting>
          </effect>
       </ImageView>
+      <Button fx:id="UploadFile" layoutX="380.0" layoutY="46.0" mnemonicParsing="false" onAction="#UploadFileClick" prefHeight="31.0" prefWidth="96.0" text="آپلود فایل" />
+      <TextField fx:id="Path" layoutX="157.0" layoutY="46.0" prefHeight="31.0" prefWidth="222.0" />
    </children>
 </Pane>
